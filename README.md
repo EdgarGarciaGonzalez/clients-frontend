@@ -6,20 +6,18 @@ SPA de gestió de clients que consumeix l'API de Spring Boot.
 - **Backend connectat:** https://clients-api-ufmt.onrender.com
 
 ## 📐 Arquitectura
-┌─────────────────────────┐
-│  Usuari (Navegador)     │
-└───────────┬─────────────┘
-│ HTTPS
-▼
-┌─────────────────────────┐
-│  Frontend (Vercel)      │  Vue 3 + Pinia + Router
-│  Vite SPA               │  VITE_API_URL → API
-└───────────┬─────────────┘
-│ REST + JSON
-▼
-┌─────────────────────────┐
-│  Backend (Render)       │  Spring Boot
-└─────────────────────────┘
+
+```mermaid
+flowchart LR
+    A[👤 Usuari] -->|HTTPS| B[🌐 Frontend SPA<br/>Vue 3 · Vercel]
+    B -->|VITE_API_URL<br/>REST + JSON| C[⚙️ Backend API<br/>Spring Boot · Render]
+    C -->|JDBC + SSL| D[🗄️ PostgreSQL<br/>Supabase]
+
+    style A fill:#1f2937,stroke:#4b5563,color:#fff
+    style B fill:#0d9488,stroke:#14b8a6,color:#fff
+    style C fill:#dc2626,stroke:#ef4444,color:#fff
+    style D fill:#7c3aed,stroke:#8b5cf6,color:#fff
+```
 
 ## 🛠️ Stack
 - **Vue 3** (Composition API + `<script setup>`)
